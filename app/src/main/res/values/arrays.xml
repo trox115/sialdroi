@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="Forma_Visita">
+        <item>Visita nas instalações do cliente</item>
+        <item>Visita nas nossas instalações</item>
+
+
+    </array>
+    <array name="Comercial">
+        <item>E06</item>
+        <item>E09</item>
+        <item>Comercial 3</item>
+
+    </array>
+
+
+        <array name="marcas">
+            <item>Selecione</item>
+            <item>LOUSALU</item>
+            <item>HASTE</item>
+            <item>ALESIL</item>
+            <item>PERFACE</item>
+            <item>HYDRO SAPA</item>
+            <item>ANICOLOR</item>
+            <item>E + PERFIL</item>
+            <item>CORTIZO</item>
+            <item>VERCAR</item>
+            <item>NAVARRA</item>
+            <item>SOSOARES</item>
+            <item>SCA</item>
+            <item>MANUEL ALMEIDA</item>
+            <item>M S ALUMINIOS</item>
+            <item>NORTALU</item>
+            <item>LA ALUMINIOS</item>
+            <item>LUSIL</item>
+            <item>AMORIM &amp; FILHOS</item>
+            <item>REYNAERS</item>
+            <item>MARIA &amp; MARINA</item>
+            <item>KAWNEER</item>
+            <item>SHUCCO</item>
+            <item>EXLABESA</item>
+            <item>LINGOTE</item>
+            <item>TAFE</item>
+            <item>OUTROS</item>
+
+
+
+
+        </array>
+    <array name="acessorios">
+        <item>Selecione</item>
+        <item>ALUALPHA</item>
+        <item>MR</item>
+        <item>STAC</item>
+        <item>BAICHA</item>
+        <item>DUBRAL</item>
+        <item>GIESSE</item>
+        <item>GNS</item>
+        <item>FUMEGAS</item>
+        <item>LUMARCA</item>
+        <item>JOBRAGA</item>
+        <item>MANUEL ALMEIDA</item>
+        <item>PAPISES</item>
+        <item>ALBERTO ARAUJO</item>
+        <item>COELHO &amp; RAMOS</item>
+        <item>OUTROS</item>
+    </array>
+
+
+</resources>

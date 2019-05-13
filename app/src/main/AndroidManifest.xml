@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.antniofernandes.alusydroid">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/alusys"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/alusys"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <provider
+            android:name="com.pushlink.android.FileProvider"
+            android:authorities="com.example.antniofernandes.alusydroid"
+            android:exported="true" />
+
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Clientes" />
+        <activity android:name=".gerar" />
+        <activity android:name=".planeador" />
+        <activity android:name=".segunda" />
+        <activity android:name=".terceira" />
+        <activity android:name=".gerador" />
+        <activity android:name=".atualizacao" />
+        <activity android:name=".login"></activity>
+    </application>
+
+</manifest>
