@@ -34,7 +34,7 @@ public class janelanovo extends AppCompatDialogFragment {
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.novocliente, null);
         builder.setView(view)
-                .setTitle("Selecione 2")
+                .setTitle("Insira os dados do cliente")
                 .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
