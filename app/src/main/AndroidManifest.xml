@@ -14,6 +14,11 @@
         android:roundIcon="@drawable/alusys"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name=".add"
+            android:label="@string/title_activity_add"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
         <provider
             android:name="com.pushlink.android.FileProvider"
             android:authorities="com.example.antniofernandes.alusydroid"
@@ -33,7 +38,7 @@
         <activity android:name=".terceira" />
         <activity android:name=".gerador" />
         <activity android:name=".atualizacao" />
-        <activity android:name=".login"></activity>
+        <activity android:name=".login" />
     </application>
 
 </manifest>
