@@ -119,7 +119,12 @@ public class gerador extends AppCompatActivity implements TimePickerDialog.OnTim
 
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
         EditText hora_saida= (EditText) findViewById(R.id.editText13);
-        hora_saida.setText(hourOfDay+ ":"+minute);
+        if (minute<10) {
+            hora_saida.setText(hourOfDay + ":0" + minute);
+        }
+        else{
+            hora_saida.setText(hourOfDay + ":" + minute);
+        }
     }
 
     public void gravar() {
@@ -142,6 +147,7 @@ public class gerador extends AppCompatActivity implements TimePickerDialog.OnTim
         String localizacao = getIntent().getStringExtra("localizacao");
         String contacto = getIntent().getStringExtra("contacto");
         String nomecontacto = getIntent().getStringExtra("nomecontacto");
+        String localidades=getIntent().getStringExtra("locall");
 
         String spinner = getIntent().getStringExtra("spinner");
         String hora_chegada = getIntent().getStringExtra("hora_chegada");
@@ -238,17 +244,18 @@ public class gerador extends AppCompatActivity implements TimePickerDialog.OnTim
         pdfPCell.setHorizontalAlignment(1);
         pdfPCell.setColspan(3);
         pdfPTable.addCell(pdfPCell);
-        pdfPCell = new PdfPCell(new Phrase("Localiza\u00e7\u00e3o:\n" + localizacao));
+        pdfPCell = new PdfPCell(new Phrase("Localiza\u00e7\u00e3o:\n" + localizacao + " - " + localidades));
         pdfPCell.setVerticalAlignment(5);
         pdfPCell.setHorizontalAlignment(1);
         pdfPCell.setColspan(4);
         pdfPTable.addCell(pdfPCell);
-        pdfPCell = new PdfPCell(new Phrase("Hora de sa\u00edda:\n" + this.hsa));
+        pdfPCell = new PdfPCell(new Phrase("Contacto: " + contacto));
         pdfPCell.setVerticalAlignment(5);
         pdfPCell.setHorizontalAlignment(1);
         pdfPCell.setColspan(3);
+
         pdfPTable.addCell(pdfPCell);
-        PdfPCell con = new PdfPCell(new Phrase("Contacto: " + contacto));
+        PdfPCell con = new PdfPCell(new Phrase("Hora de sa\u00edda:\n" + this.hsa));
         con.setVerticalAlignment(5);
         con.setHorizontalAlignment(1);
         con.setColspan(4);

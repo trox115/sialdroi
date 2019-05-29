@@ -1,6 +1,7 @@
 package com.example.antniofernandes.alusydroid;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -30,9 +31,17 @@ public class Clientes extends AppCompatActivity implements janelanovo.ExampleDia
         exemplo.show(getSupportFragmentManager(),"Janela de Exemplo");
     }
 
-    public void applyTexts5(String s, String s2, String s3, String s4) {
+    public void applyTexts5(String s, String s2, String s3, String s4, String s5) {
+        String cliente=s5;
+        String morada=s2;
+        String nomecontacto=s4;
+        String localidade=s;
+        String telefone=s3;
+        SharedPreferences editor = getSharedPreferences("minhaspreferencias", MODE_PRIVATE);
+        final String comercial = editor.getString("comercial","No name"); //default value
 
-
+        background2 bg = new background2(this);
+        bg.execute(cliente,morada,nomecontacto,localidade,telefone,comercial);
 
         Toast.makeText(Clientes.this, s4, Toast.LENGTH_LONG).show();
     }

@@ -104,6 +104,7 @@ save.setOnClickListener(new View.OnClickListener() {
         String spinner = terceira.this.getIntent().getStringExtra("spinner");
         String hora_chegada = terceira.this.getIntent().getStringExtra("hora_chegada");
         String p1 = terceira.this.getIntent().getStringExtra("r1");
+        String localidades=terceira.this.getIntent().getStringExtra("locall");
         String p2 = terceira.this.getIntent().getStringExtra("r2");
         String p3 = terceira.this.getIntent().getStringExtra("r3");
         String p4 = terceira.this.getIntent().getStringExtra("r4");
@@ -134,7 +135,7 @@ save.setOnClickListener(new View.OnClickListener() {
         intent.putExtra("r2", p2);
         intent.putExtra("r3", p3);
         intent.putExtra("r4", p4);
-
+        intent.putExtra("locall",localidades);
         intent.putExtra("r7", terceira.this.p7);
         intent.putExtra("r5", terceira.this.p5);
         intent.putExtra("r6", terceira.this.p6);

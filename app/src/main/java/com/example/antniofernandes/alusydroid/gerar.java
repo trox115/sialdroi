@@ -2,6 +2,7 @@ package com.example.antniofernandes.alusydroid;
 
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Environment;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
@@ -31,16 +32,19 @@ public class gerar extends AppCompatActivity implements janelanovo.ExampleDialog
     public static String File_Name2 ="contactos.txt";
     public static String File_Name3 ="moradas.txt";
     public static String File_Name4 ="responsavel.txt";
+    public static String File_Name5 = "localidades.txt";
     public ArrayList<String> cl = new ArrayList<>();
     public String firm;
     public String contacto;
     public String nomecontacto;
+    public String localidade;
 
     private TextView contacto1;
     private TextView nomecontacto1;
 
     public String localizacao;
     private TextView localizacao1;
+    private EditText localidade1;
     public String spinner;
     private Spinner spinner1;
     public RadioButton sim;
@@ -57,12 +61,14 @@ public class gerar extends AppCompatActivity implements janelanovo.ExampleDialog
         localizacao1=(TextView) findViewById(R.id.local);
         contacto1 = (EditText) findViewById(R.id.contact);
         nomecontacto1=(TextView) findViewById(R.id.responsavel) ;
+        localidade1=(EditText) findViewById(R.id.editText16);
 
         final AutoCompleteTextView cliente = (AutoCompleteTextView) findViewById(R.id.empresa);
         final String[] listaclientes=lerclientes();
         final String[] listacontactos=lercontactos();
         final String[] listamorada=lermoradas();
         final String[] listanomecontacto=lernomecontacto();
+        final String[] listalocalidades = lerlocalidades();
         final EditText hora_chegada= (EditText) findViewById(R.id.editText4);
         ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, listaclientes);
         cliente.setThreshold(3);
@@ -100,6 +106,7 @@ public class gerar extends AppCompatActivity implements janelanovo.ExampleDialog
                 gerar.this.firm = cliente.getText().toString();
                 gerar.this.contacto = contacto1.getText().toString();
                 gerar.this.nomecontacto = nomecontacto1.getText().toString();
+                gerar.this.localidade = localidade1.getText().toString();
 
                 gerar.this.localizacao=localizacao1.getText().toString();
                 gerar.this.horadechegada=hora_chegada.getText().toString();
@@ -112,6 +119,8 @@ public class gerar extends AppCompatActivity implements janelanovo.ExampleDialog
                             gerar.this.contacto1.setText(listacontactos[gerar.this.i]);
                             gerar.this.localizacao1.setText(listamorada[gerar.this.i]);
                             gerar.this.nomecontacto1.setText(listanomecontacto[gerar.this.i]);
+                            gerar.this.localidade1.setText(listalocalidades[gerar.this.i]);
+
                             break;
                         }
 
@@ -132,6 +141,7 @@ public class gerar extends AppCompatActivity implements janelanovo.ExampleDialog
                     intent.putExtra("hora_chegada", horadechegada);
                     intent.putExtra("spinner", gerar.this.spinner);
                     intent.putExtra("r00", "Sim");
+                    intent.putExtra("locall",gerar.this.localidade);
                     gerar.this.startActivity(intent);
                 }
 
@@ -144,6 +154,7 @@ public class gerar extends AppCompatActivity implements janelanovo.ExampleDialog
                     intent.putExtra("hora_chegada", horadechegada);
                     intent.putExtra("spinner", gerar.this.spinner);
                     intent.putExtra("r00", "N\u00e3o");
+                    intent.putExtra("locall",gerar.this.localidade);
                     gerar.this.startActivity(intent);
                 } else {
                     Toast.makeText(gerar.this.getApplicationContext(), "Por favor preencha todos os campos.", Toast.LENGTH_LONG).show();
@@ -161,7 +172,13 @@ public class gerar extends AppCompatActivity implements janelanovo.ExampleDialog
 
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
         EditText hora_chegada= (EditText) findViewById(R.id.editText4);
-        hora_chegada.setText(hourOfDay+ ":"+minute);
+        String hora;
+        if (minute<10) {
+            hora_chegada.setText(hourOfDay + ":0" + minute);
+        }
+        else{
+            hora_chegada.setText(hourOfDay+ ":"+minute);
+        }
     }
 
 
@@ -322,16 +339,69 @@ public class gerar extends AppCompatActivity implements janelanovo.ExampleDialog
         return array3;
     }
 
+    public String[] lerlocalidades(){
+        ArrayList<String> cl = new ArrayList<>();
+        int i = 0;
+        //Toast.makeText(relatorio.this, "Estas auqi", Toast.LENGTH_LONG).show();
+
+        StringBuilder sb = new StringBuilder();
+        File textfile;
+        textfile = new File(Environment.getExternalStorageDirectory(), File_Name5);
+
+        String[] array4 = new String[0];
+        try {
+            FileInputStream fis = new FileInputStream(textfile);
+            if (fis != null) {
+                InputStreamReader isr = new InputStreamReader(fis);
+                BufferedReader buff = new BufferedReader(isr);
+                String line = null;
+                while ((line = buff.readLine()) != null) {
+
+                    sb.append(line);
+                    cl.add(sb.toString());
+                    i++;
+                    sb = new StringBuilder();
+
+                }
+                array4 = cl.toArray(new String[cl.size()]);
+
+            } else {
+
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        //Toast.makeText(relatorio.this, array3[0], Toast.LENGTH_LONG).show();
+        return array4;
+    }
+
+
+
+
+
+
     public void openDialog7(){
         janelanovo exemplo =new janelanovo();
         exemplo.show(getSupportFragmentManager(),"Janela de Exemplo");
     }
 
-    public void applyTexts5(String s, String s2, String s3, String s4) {
+    public void applyTexts5(String s, String s2, String s3, String s4, String s5) {
 
-            gerar.this.contacto1.setText(s2);
-            gerar.this.localizacao1.setText(s3);
+            gerar.this.contacto1.setText(s3);
+            gerar.this.localizacao1.setText(s2);
             gerar.this.nomecontacto1.setText(s4);
+            gerar.this.localidade1.setText(s);
+
+        String cliente=s5;
+        String morada=s2;
+        String nomecontacto=s4;
+        String localidade=s;
+        String telefone=s3;
+        SharedPreferences editor = getSharedPreferences("minhaspreferencias", MODE_PRIVATE);
+        final String comercial = editor.getString("comercial","No name"); //default value
+
+        background2 bg = new background2(this);
+        bg.execute(cliente,morada,nomecontacto,localidade,telefone,comercial);
 
         Toast.makeText(gerar.this, s4, Toast.LENGTH_LONG).show();
 }
