@@ -61,7 +61,7 @@ public class gerar extends AppCompatActivity implements janelanovo.ExampleDialog
         localizacao1=(TextView) findViewById(R.id.local);
         contacto1 = (EditText) findViewById(R.id.contact);
         nomecontacto1=(TextView) findViewById(R.id.responsavel) ;
-        localidade1=(EditText) findViewById(R.id.editText16);
+        localidade1= findViewById(R.id.editText16);
 
         final AutoCompleteTextView cliente = (AutoCompleteTextView) findViewById(R.id.empresa);
         final String[] listaclientes=lerclientes();
