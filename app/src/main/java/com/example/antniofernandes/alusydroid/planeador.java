@@ -87,7 +87,7 @@ public class planeador extends AppCompatActivity {
         final Spinner spinner = (Spinner) findViewById(R.id.spinner3);
 
        final ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, zona);
-        spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
+       spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
         spinner.setAdapter(spinnerArrayAdapter);
 
 
@@ -350,6 +350,11 @@ public class planeador extends AppCompatActivity {
     }
 
     public String[] removerduplicados(String[] dados) {
+        i=0;
+        while(i<dados.length){
+            dados[i]=dados[i].toUpperCase();
+            i++;
+        }
         LinkedHashSet<String> lhSetColors =
                 new LinkedHashSet<String>(Arrays.asList(dados));
 
