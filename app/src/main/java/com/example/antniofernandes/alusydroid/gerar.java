@@ -128,7 +128,7 @@ public class gerar extends AppCompatActivity implements janelanovo.ExampleDialog
                         i++;
                     }
                       if(i==listaclientes.length){
-                        openDialog7();
+                          Toast.makeText(gerar.this.getApplicationContext(), "Cliente não encontrado. Por favor adicione este cliente.", Toast.LENGTH_LONG).show();
                     }
                 }
 
