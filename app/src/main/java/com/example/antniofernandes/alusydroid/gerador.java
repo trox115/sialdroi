@@ -80,6 +80,7 @@ public class gerador extends AppCompatActivity implements TimePickerDialog.OnTim
         final String comercial = editor.getString("comercial","No name"); //default value
         this.ob13 = (TextView) findViewById(R.id.editText10);
         this.ob14 = (TextView) findViewById(R.id.editText12);
+        ob14.setVisibility(View.INVISIBLE);
         this.hs1 = (TextView) findViewById(R.id.editText13);
         this.dta = (TextView) findViewById(R.id.editText14);
         this.liquidou = (TextView) findViewById(R.id.editText11);
@@ -132,12 +133,17 @@ public class gerador extends AppCompatActivity implements TimePickerDialog.OnTim
     }
 
     public void gravar() {
-        try {
-            gerador.this.write_file();
-        } catch (DocumentException e) {
-            e.printStackTrace();
-        }
+        if (dta.length()>0 || hs1.length()>0) {
+            try {
+                gerador.this.write_file();
+            } catch (DocumentException e) {
+                e.printStackTrace();
+            }
 
+        }
+        else{
+            Toast.makeText(gerador.this.getApplicationContext(), "Data e hora de saída deverão estar preenchidos.", Toast.LENGTH_LONG).show();
+        }
     }
 
     public void write_file() throws DocumentException {
@@ -234,7 +240,7 @@ public class gerador extends AppCompatActivity implements TimePickerDialog.OnTim
         } catch (IOException e2) {
             e2.printStackTrace();
         }
-        BaseColor myColor = WebColors.getRGBColor("#ff8c00");
+        BaseColor myColor = WebColors.getRGBColor("#0066ff");
         BaseColor myColor2 = WebColors.getRGBColor("A0A0A0");
         PdfPTable pdfPTable = new PdfPTable(10);
         pdfPTable.setSpacingAfter(30f);
@@ -427,14 +433,14 @@ public class gerador extends AppCompatActivity implements TimePickerDialog.OnTim
         b1.setColspan(8);
         b1.setRowspan(3);
         pdfPTable.addCell(b1);
-        PdfPCell b3 = new PdfPCell(new Phrase("\n Liquidou: \n " + this.liquid + " €"));
+        PdfPCell b3 = new PdfPCell(new Phrase("\n Liquidou:  " + this.liquid + " €"));
         b3.setColspan(8);
         b3.setRowspan(3);
         pdfPTable.addCell(b3);
-        PdfPCell b2 = new PdfPCell(new Phrase("\n Informações Comerciais: \n " + this.obs14));
+        /*PdfPCell b2 = new PdfPCell(new Phrase("\n Informações Comerciais: \n " + this.obs14));
         b2.setColspan(8);
         b2.setRowspan(3);
-        pdfPTable.addCell(b2);
+        pdfPTable.addCell(b2);*/
         document.add(pdfPTable);
         document.add(new Paragraph("Documento gerado por "+vendedor+" atrav\u00e9s de Alusydroid"));
         document.add(new Paragraph("Data: "+ this.data1));
