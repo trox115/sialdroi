@@ -5,6 +5,8 @@ import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
@@ -36,6 +38,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -211,12 +214,21 @@ public class gerador extends AppCompatActivity implements TimePickerDialog.OnTim
         Font font = new Font(Font.FontFamily.TIMES_ROMAN, 11.0f);
         font = new Font(Font.FontFamily.TIMES_ROMAN, 6.0f);
         try {
-            Image Sialnor = Image.getInstance(folder + "/Sialnor1.png");
-           
+            /*Image Sialnor = Image.getInstance(folder + "/Sialnor1.png");
+
             Sialnor.setAbsolutePosition(92.0f, 815.0f);
             Sialnor.scaleAbsoluteHeight(20.0f);
             Sialnor.scaleAbsoluteWidth(100.0f);
-            document.add(Sialnor);
+            document.add(Sialnor);*/
+            InputStream ims = getAssets().open("alusydroid.png");
+            Bitmap bmp = BitmapFactory.decodeStream(ims);
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            bmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            Image image = Image.getInstance(stream.toByteArray());
+            image.scaleAbsoluteHeight(20.0f);
+            image.scaleAbsoluteWidth(100.0f);
+            document.add(image);
+
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e2) {
@@ -243,7 +255,7 @@ public class gerador extends AppCompatActivity implements TimePickerDialog.OnTim
         pdfPCell.setRowspan(2);
         pdfPTable.addCell(pdfPCell);
 
-        pdfPCell = new PdfPCell(new Phrase("Hora de chegada: " + hora_chegada));
+        pdfPCell = new PdfPCell(new Phrase("Hora de chegada: " + hora_chegada,baba));
         pdfPCell.setVerticalAlignment(5);
         pdfPCell.setHorizontalAlignment(Element.ALIGN_LEFT);
         pdfPCell.setColspan(3);
@@ -251,7 +263,7 @@ public class gerador extends AppCompatActivity implements TimePickerDialog.OnTim
         pdfPTable.addCell(pdfPCell);
 
 
-        pdfPCell = new PdfPCell(new Phrase("\bMorada:" + localizacao + " - " + localidades));
+        pdfPCell = new PdfPCell(new Phrase("Morada:" + localizacao + " - " + localidades));
         pdfPCell.setVerticalAlignment(5);
         pdfPCell.setHorizontalAlignment(Element.ALIGN_LEFT);
         pdfPCell.setColspan(7);
@@ -271,7 +283,7 @@ public class gerador extends AppCompatActivity implements TimePickerDialog.OnTim
         pdfPCell.setColspan(7);
         pdfPTable.addCell(pdfPCell);
 
-        pdfPCell = new PdfPCell(new Phrase("Telefone: " + contacto));
+        pdfPCell = new PdfPCell(new Phrase("Telefone: " + contacto ,baba));
         pdfPCell.setVerticalAlignment(5);
         pdfPCell.setHorizontalAlignment(Element.ALIGN_LEFT);
         pdfPCell.setColspan(3);
