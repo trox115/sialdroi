@@ -24,6 +24,7 @@ import android.widget.Toast;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
@@ -180,10 +181,10 @@ public class gerador extends AppCompatActivity implements TimePickerDialog.OnTim
         final String comercial = editor.getString("comercial","No name");
         String vendedor="";
         if (comercial.equals("E06")){
-            vendedor = "João César";
+            vendedor = "Rui Mendes";
         }
         else if(comercial.equals("E09")){
-            vendedor = "Rui Mendes";
+            vendedor = "João César";
         }
 
         String a1 = getIntent().getStringExtra("r00");
@@ -205,11 +206,13 @@ public class gerador extends AppCompatActivity implements TimePickerDialog.OnTim
         document.open();
 
         Font boldFont = new Font(Font.FontFamily.TIMES_ROMAN, 18.0f, 1);
-        Font baba = new Font(Font.FontFamily.TIMES_ROMAN, 13.0f, 1);
+        Font baba = new Font(Font.FontFamily.TIMES_ROMAN, 11.0f);
+        Font baba2 = new Font(Font.FontFamily.TIMES_ROMAN, 13.0f);
         Font font = new Font(Font.FontFamily.TIMES_ROMAN, 11.0f);
         font = new Font(Font.FontFamily.TIMES_ROMAN, 6.0f);
         try {
             Image Sialnor = Image.getInstance(folder + "/Sialnor1.png");
+           
             Sialnor.setAbsolutePosition(92.0f, 815.0f);
             Sialnor.scaleAbsoluteHeight(20.0f);
             Sialnor.scaleAbsoluteWidth(100.0f);
@@ -222,6 +225,8 @@ public class gerador extends AppCompatActivity implements TimePickerDialog.OnTim
         BaseColor myColor = WebColors.getRGBColor("#ff8c00");
         BaseColor myColor2 = WebColors.getRGBColor("A0A0A0");
         PdfPTable pdfPTable = new PdfPTable(10);
+        pdfPTable.setSpacingAfter(30f);
+        pdfPTable.setSpacingBefore(10f);
         PdfPCell pdfPCell = new PdfPCell(new Phrase("Relat\u00f3rio di\u00e1rio de visita a cliente"));
         pdfPCell.setVerticalAlignment(5);
         pdfPCell.setHorizontalAlignment(1);
@@ -229,44 +234,52 @@ public class gerador extends AppCompatActivity implements TimePickerDialog.OnTim
         pdfPCell.setColspan(10);
         pdfPCell.setRowspan(2);
         pdfPTable.addCell(pdfPCell);
+
         pdfPCell = new PdfPCell(new Phrase("Cliente: " + firm));
         pdfPCell.setVerticalAlignment(5);
-        pdfPCell.setHorizontalAlignment(1);
-        pdfPCell.setColspan(4);
-        pdfPTable.addCell(pdfPCell);
-        pdfPCell = new PdfPCell(new Phrase("Data: \n" + this.data1));
-        pdfPCell.setVerticalAlignment(5);
-        pdfPCell.setHorizontalAlignment(1);
-        pdfPCell.setColspan(3);
-        pdfPTable.addCell(pdfPCell);
-        pdfPCell = new PdfPCell(new Phrase("Hora de chegada:\n" + hora_chegada));
-        pdfPCell.setVerticalAlignment(5);
-        pdfPCell.setHorizontalAlignment(1);
-        pdfPCell.setColspan(3);
-        pdfPTable.addCell(pdfPCell);
-        pdfPCell = new PdfPCell(new Phrase("Localiza\u00e7\u00e3o:\n" + localizacao + " - " + localidades));
-        pdfPCell.setVerticalAlignment(5);
-        pdfPCell.setHorizontalAlignment(1);
-        pdfPCell.setColspan(4);
-        pdfPTable.addCell(pdfPCell);
-        pdfPCell = new PdfPCell(new Phrase("Contacto: " + contacto));
-        pdfPCell.setVerticalAlignment(5);
-        pdfPCell.setHorizontalAlignment(1);
-        pdfPCell.setColspan(3);
+        pdfPCell.setHorizontalAlignment(Element.ALIGN_LEFT);
 
-        pdfPTable.addCell(pdfPCell);
-        PdfPCell con = new PdfPCell(new Phrase("Hora de sa\u00edda:\n" + this.hsa));
-        con.setVerticalAlignment(5);
-        con.setHorizontalAlignment(1);
-        con.setColspan(4);
-        pdfPTable.addCell(con);
-        pdfPCell = new PdfPCell(new Phrase("\n Nome do contacto: " + nomecontacto + "\n", font));
-        pdfPCell.setVerticalAlignment(5);
-        pdfPCell.setHorizontalAlignment(1);
-        pdfPCell.setBackgroundColor(myColor2);
-        pdfPCell.setColspan(10);
+        pdfPCell.setColspan(7);
         pdfPCell.setRowspan(2);
         pdfPTable.addCell(pdfPCell);
+
+        pdfPCell = new PdfPCell(new Phrase("Hora de chegada: " + hora_chegada));
+        pdfPCell.setVerticalAlignment(5);
+        pdfPCell.setHorizontalAlignment(Element.ALIGN_LEFT);
+        pdfPCell.setColspan(3);
+        pdfPCell.setRowspan(2);
+        pdfPTable.addCell(pdfPCell);
+
+
+        pdfPCell = new PdfPCell(new Phrase("\bMorada:" + localizacao + " - " + localidades));
+        pdfPCell.setVerticalAlignment(5);
+        pdfPCell.setHorizontalAlignment(Element.ALIGN_LEFT);
+        pdfPCell.setColspan(7);
+        pdfPTable.addCell(pdfPCell);
+
+
+        PdfPCell con = new PdfPCell(new Phrase("Hora de sa\u00edda:" + this.hsa,baba));
+        con.setVerticalAlignment(5);
+        con.setHorizontalAlignment(Element.ALIGN_LEFT);
+        con.setColspan(4);
+        pdfPTable.addCell(con);
+
+
+        pdfPCell = new PdfPCell(new Phrase("Nome do contacto: " + nomecontacto ));
+       // pdfPCell.setVerticalAlignment(5);
+        pdfPCell.setHorizontalAlignment(Element.ALIGN_LEFT);
+        pdfPCell.setColspan(7);
+        pdfPTable.addCell(pdfPCell);
+
+        pdfPCell = new PdfPCell(new Phrase("Telefone: " + contacto));
+        pdfPCell.setVerticalAlignment(5);
+        pdfPCell.setHorizontalAlignment(Element.ALIGN_LEFT);
+        pdfPCell.setColspan(3);
+        pdfPTable.addCell(pdfPCell);
+
+
+/*
+
         pdfPCell = new PdfPCell(new Phrase("\n Forma de visita: " + spinner + "\n", font));
         pdfPCell.setVerticalAlignment(5);
         pdfPCell.setHorizontalAlignment(1);
@@ -279,33 +292,36 @@ public class gerador extends AppCompatActivity implements TimePickerDialog.OnTim
         pdfPCell.setHorizontalAlignment(1);
         pdfPCell.setColspan(10);
         pdfPCell.setRowspan(2);
-        pdfPTable.addCell(pdfPCell);
+        pdfPTable.addCell(pdfPCell);*/
+
         document.add(pdfPTable);
         pdfPTable = new PdfPTable(10);
+        pdfPTable.setSpacingAfter(30f);
+        pdfPTable.setSpacingBefore(10f);
         pdfPCell = new PdfPCell(new Phrase("A-Pontos a verificar"));
         pdfPCell.setVerticalAlignment(5);
         pdfPCell.setHorizontalAlignment(1);
         pdfPCell.setBackgroundColor(myColor);
         pdfPCell.setColspan(10);
         pdfPTable.addCell(pdfPCell);
-        pdfPCell = new PdfPCell(new Phrase("\n 1.O cliente utiliza preferencialmente produts Alusys? \n", font));
+        pdfPCell = new PdfPCell(new Phrase("\n 1.O cliente utiliza preferencialmente produts Alusys? \n"));
         pdfPCell.setColspan(9);
         pdfPTable.addCell(pdfPCell);
         pdfPCell = new PdfPCell(new Phrase(" \n " + p1));
         pdfPCell.setColspan(1);
         pdfPTable.addCell(pdfPCell);
-        pdfPCell = new PdfPCell(new Phrase("    1.1. Que marcas? " + m1+", "+m2+", "+m3, font));
+        pdfPCell = new PdfPCell(new Phrase("    1.1. Que marcas? " + m1+", "+m2+", "+m3));
         pdfPCell.setColspan(10);
         pdfPCell.setRowspan(2);
         pdfPTable.addCell(pdfPCell);
 
-        pdfPCell = new PdfPCell(new Phrase("\n 2.O Cliente utiliza os nossos acessórios? \n", font));
+        pdfPCell = new PdfPCell(new Phrase("\n 2.O Cliente utiliza os nossos acessórios? \n"));
         pdfPCell.setColspan(9);
         pdfPTable.addCell(pdfPCell);
         pdfPCell = new PdfPCell(new Phrase(" \n " + p2));
         pdfPCell.setColspan(1);
         pdfPTable.addCell(pdfPCell);
-        pdfPCell = new PdfPCell(new Phrase("    2.1. Que marcas de acessórios utiliza ? " + ace1+", "+ace2, font));
+        pdfPCell = new PdfPCell(new Phrase("    2.1. Que marcas de acessórios utiliza ? " + ace1+", "+ace2));
         pdfPCell.setColspan(10);
         pdfPCell.setRowspan(2);
         pdfPTable.addCell(pdfPCell);
@@ -317,17 +333,17 @@ public class gerador extends AppCompatActivity implements TimePickerDialog.OnTim
         pdfPCell.setColspan(10);
         pdfPCell.setRowspan(2);
         pdfPTable.addCell(pdfPCell);*/
-        pdfPCell = new PdfPCell(new Phrase("\n 3.O cliente tem expositor com os nossos produtos? \n ", font));
+        pdfPCell = new PdfPCell(new Phrase("\n 3.O cliente tem expositor com os nossos produtos? \n "));
         pdfPCell.setColspan(9);
         pdfPTable.addCell(pdfPCell);
         pdfPCell = new PdfPCell(new Phrase(" \n " + p3));
         pdfPCell.setColspan(1);
         pdfPTable.addCell(pdfPCell);
-        pdfPCell = new PdfPCell(new Phrase("Quais? " + obs3, font));
+        pdfPCell = new PdfPCell(new Phrase("Quais? " + obs3));
         pdfPCell.setColspan(10);
         pdfPCell.setRowspan(2);
         pdfPTable.addCell(pdfPCell);
-        pdfPCell = new PdfPCell(new Phrase("\n 4.O cliente tem protótipos/amostras dos nossos produtos? \n ", font));
+        pdfPCell = new PdfPCell(new Phrase("\n 4.O cliente tem protótipos/amostras dos nossos produtos? \n "));
         pdfPCell.setColspan(9);
         pdfPTable.addCell(pdfPCell);
         pdfPCell = new PdfPCell(new Phrase(" \n " + p4));
@@ -354,7 +370,7 @@ public class gerador extends AppCompatActivity implements TimePickerDialog.OnTim
         pdfPCell.setColspan(10);
         pdfPCell.setRowspan(2);
         pdfPTable.addCell(pdfPCell);*/
-        PdfPCell ac = new PdfPCell(new Phrase("\n 5. O cliente tem os nossos catálogos atualizados?  \n", font));
+        PdfPCell ac = new PdfPCell(new Phrase("\n 5. O cliente tem os nossos catálogos atualizados?  \n"));
         ac.setColspan(9);
         pdfPTable.addCell(ac);
         pdfPCell = new PdfPCell(new Phrase(" \n " + p5));
@@ -363,19 +379,19 @@ public class gerador extends AppCompatActivity implements TimePickerDialog.OnTim
        /* pdfPCell = new PdfPCell(new Phrase("    Observa\u00e7\u00f5es: " + obs7, font));
         pdfPCell.setColspan(10);
         pdfPTable.addCell(pdfPCell);*/
-        PdfPCell cp = new PdfPCell(new Phrase("\n 6. O cliente precisa de apoio técnico? \n ", font));
+        PdfPCell cp = new PdfPCell(new Phrase("\n 6. O cliente precisa de apoio técnico? \n "));
         cp.setColspan(9);
         pdfPTable.addCell(cp);
         pdfPCell = new PdfPCell(new Phrase(" \n " + p6));
         pdfPCell.setColspan(1);
         pdfPTable.addCell(pdfPCell);
-        PdfPCell ap = new PdfPCell(new Phrase("\n 7. Existe alguma sitação pendente de resolução? \n", font));
+        PdfPCell ap = new PdfPCell(new Phrase("\n 7. Existe alguma sitação pendente de resolução? \n"));
         ap.setColspan(9);
         pdfPTable.addCell(ap);
         pdfPCell = new PdfPCell(new Phrase(" \n " + p7));
         pdfPCell.setColspan(1);
         pdfPTable.addCell(pdfPCell);
-        pdfPCell = new PdfPCell(new Phrase("    Observa\u00e7\u00f5es: " + obs7, font));
+        pdfPCell = new PdfPCell(new Phrase("    Observa\u00e7\u00f5es: " + obs7));
         pdfPCell.setColspan(10);
         pdfPTable.addCell(pdfPCell);
       /*  pdfPCell = new PdfPCell(new Phrase("\n 9. Existe alguma situa\u00e7\u00e3o ainda n\u00e3o tratada?\n ", font));
@@ -389,7 +405,9 @@ public class gerador extends AppCompatActivity implements TimePickerDialog.OnTim
         pdfPTable.addCell(pdfPCell);*/
         document.add(pdfPTable);
         pdfPTable = new PdfPTable(8);
-        PdfPCell b = new PdfPCell(new Phrase("\n B- Informa\u00e7\u00f5es Complementares relativamente ao Cliente/Mercado e/ou \u00c1reas de Melhoria: \n ", font));
+        pdfPTable.setSpacingAfter(30f);
+        pdfPTable.setSpacingBefore(10f);
+        PdfPCell b = new PdfPCell(new Phrase("\n B- Informa\u00e7\u00f5es Complementares relativamente ao Cliente/Mercado e/ou \u00c1reas de Melhoria: \n "));
         b.setColspan(10);
         b.setBackgroundColor(myColor);
         pdfPTable.addCell(b);
@@ -406,8 +424,16 @@ public class gerador extends AppCompatActivity implements TimePickerDialog.OnTim
         b2.setRowspan(3);
         pdfPTable.addCell(b2);
         document.add(pdfPTable);
-        document.add(new Paragraph("Documento gerado por "+vendedor+" atrav\u00e9s de Alusydroid", font));
+        document.add(new Paragraph("Documento gerado por "+vendedor+" atrav\u00e9s de Alusydroid"));
+        document.add(new Paragraph("Data: "+ this.data1));
         document.close();
+
+       /* pdfPCell = new PdfPCell(new Phrase("Data: \n" + this.data1));
+        pdfPCell.setVerticalAlignment(5);
+        pdfPCell.setHorizontalAlignment(1);
+        pdfPCell.setColspan(3);
+        pdfPTable.addCell(pdfPCell);*/
+
         Toast.makeText(getApplicationContext(), "Gravado com sucesso", Toast.LENGTH_LONG).show();
 
         sendEmail(file,firm,cd);
