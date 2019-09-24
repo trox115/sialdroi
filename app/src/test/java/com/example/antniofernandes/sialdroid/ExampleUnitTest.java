@@ -1,4 +1,4 @@
-package com.example.antniofernandes.alusydroid;
+package com.example.antniofernandes.sialdroid;
 
 import org.junit.Test;
 
