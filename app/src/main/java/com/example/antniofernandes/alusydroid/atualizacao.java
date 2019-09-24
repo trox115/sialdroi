@@ -36,6 +36,7 @@ public class atualizacao extends AppCompatActivity {
     private static final String FILE_NAME3 ="moradas.txt" ;
     private static final String FILE_NAME4="responsavel.txt";
     private static final String FILE_NAME5="interna.txt";
+    private static final String FILE_NAME6="localidades.txt";
 
 
     ArrayAdapter<String> tes;
@@ -68,12 +69,14 @@ public class atualizacao extends AppCompatActivity {
                         final String [] contactos=getcontactos();
                         final String [] moradas=getmoradas();
                         final String [] responsavel=getresponsavel();
+                        final String [] localidades=getlocalidades();
 
                         escreverclientes(clientes);
                         escrevercontactos(contactos);
                         escrevermoradas(moradas);
                         escreverresponsavel(responsavel);
                         escreverclientesinterno(clientes);
+                        escreverlocalidades(localidades);
                         Toast.makeText(atualizacao.this, "Atualização Completa", Toast.LENGTH_LONG).show();
                         finish();
 
@@ -89,12 +92,14 @@ public class atualizacao extends AppCompatActivity {
                         final String [] contactos=getcontactos();
                         final String [] moradas=getmoradas();
                         final String [] responsavel=getresponsavel();
+                        final String [] localidades=getlocalidades();
 
                         escreverclientes(clientes);
                         escrevercontactos(contactos);
                         escrevermoradas(moradas);
                         escreverresponsavel(responsavel);
                         escreverclientesinterno(clientes);
+                        escreverlocalidades(localidades);
                         Toast.makeText(atualizacao.this, "Atualização Completa", Toast.LENGTH_LONG).show();
                         finish();
 
@@ -114,6 +119,115 @@ public class atualizacao extends AppCompatActivity {
             }
         });
     }
+
+    public String[] getlocalidades() throws IOException {
+        try {
+            URL url = new URL(adress);
+            HttpURLConnection con= (HttpURLConnection)url.openConnection();
+            con.setRequestMethod("GET");
+            is = new BufferedInputStream(con.getInputStream());
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        //LER IS E TRANSFORMAR EM STRING
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(is));
+        StringBuilder sb = new StringBuilder();
+
+        while((line=br.readLine())!=null){
+            sb.append(line +"\n");
+
+        }
+        is.close();
+        result=sb.toString();
+        String[] dados = new String[0];
+
+        //PARSE jSON DATA
+        try {
+            JSONArray ja= new JSONArray(result);
+            JSONObject jo = null;
+            dados= new String[ja.length()];
+            //  Toast.makeText(MainActivity.this, "teste", Toast.LENGTH_SHORT).show();
+            for(int i=0;i<ja.length();i++){
+                jo=ja.getJSONObject(i);
+                dados[i] = jo.getString("localidade");
+
+            }
+            //Toast.makeText(MainActivity.this, dados[1], Toast.LENGTH_SHORT).show();
+        } catch (JSONException e) {
+            e.printStackTrace();
+
+        }
+        return dados;
+    }
+
+    public void escreverlocalidades(String [] teste){
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
+            if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+                String premissions = (Manifest.permission.WRITE_EXTERNAL_STORAGE);
+                requestPermissions(new String[]{premissions}, STORAGE_CODE);
+                String[] INITIAL_PERMS = {Manifest.permission.READ_EXTERNAL_STORAGE};
+                requestPermissions(INITIAL_PERMS, REQUEST);
+            } else {
+
+                File textfile;
+                textfile = new File(Environment.getExternalStorageDirectory(), FILE_NAME6);
+                try {
+                    FileOutputStream fos = new FileOutputStream(textfile);
+                    String cli;
+                    int i = 0;
+
+                    while (teste.length > i) {
+                        cli = teste[i] + "\n";
+                        try {
+                            fos.write(cli.getBytes());
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        i++;
+                    }
+
+                } catch (IOException e) {
+
+                }
+            }
+
+
+        } else {
+
+
+            File textfile;
+            textfile = new File(Environment.getExternalStorageDirectory(), FILE_NAME6);
+            try {
+                FileOutputStream fos = new FileOutputStream(textfile);
+                String cli;
+                int i = 0;
+
+                while (teste.length > i) {
+                    cli = teste[i] + "\n";
+                    try {
+                        fos.write(cli.getBytes());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    i++;
+                }
+
+            } catch (IOException e) {
+
+            }
+
+        }
+    }
+
+
+
+
+
+
 
 
 

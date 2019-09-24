@@ -1,19 +1,16 @@
 package com.example.antniofernandes.alusydroid;
 
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -87,7 +84,7 @@ public class planeador extends AppCompatActivity {
         final Spinner spinner = (Spinner) findViewById(R.id.spinner3);
 
        final ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, zona);
-        spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
+       spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
         spinner.setAdapter(spinnerArrayAdapter);
 
 
@@ -350,6 +347,11 @@ public class planeador extends AppCompatActivity {
     }
 
     public String[] removerduplicados(String[] dados) {
+        i=0;
+        while(i<dados.length){
+            dados[i]=dados[i].toUpperCase();
+            i++;
+        }
         LinkedHashSet<String> lhSetColors =
                 new LinkedHashSet<String>(Arrays.asList(dados));
 

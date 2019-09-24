@@ -2,8 +2,6 @@ package com.example.antniofernandes.alusydroid;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
 
 import java.io.BufferedReader;

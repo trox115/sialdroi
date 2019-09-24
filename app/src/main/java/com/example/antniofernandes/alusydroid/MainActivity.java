@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
         Button gerar =(Button) findViewById(R.id.button);
 
         Button opcoes=(Button) findViewById(R.id.button4);

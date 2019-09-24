@@ -163,17 +163,20 @@ public class segunda extends AppCompatActivity implements janelamarcas.ExampleDi
                     String spinner = segunda.this.getIntent().getStringExtra("spinner");
                     String hora_chegada = segunda.this.getIntent().getStringExtra("hora_chegada");
                     String a1 = segunda.this.getIntent().getStringExtra("r00");
+                    String localidades=segunda.this.getIntent().getStringExtra("locall");
                     if (segunda.this.p1.equals(PdfObject.NOTHING) || segunda.this.p2.equals(PdfObject.NOTHING) || segunda.this.p3.equals(PdfObject.NOTHING) || segunda.this.p4.equals(PdfObject.NOTHING)) {
                         Toast.makeText(segunda.this.getApplicationContext(), "Por favor preencha todos os campos.",Toast.LENGTH_LONG).show();
                         return;
                     }
                     Intent intent = new Intent(segunda.this.getApplicationContext(), terceira.class);
                     intent.putExtra("localizacao", localizacao);
+
                     intent.putExtra("contacto", contacto);
                     intent.putExtra("nomecontacto", nomecontacto);
                     intent.putExtra("spinner", spinner);
                     intent.putExtra("hora_chegada", hora_chegada);
                     intent.putExtra("cliente", firm);
+                    intent.putExtra("locall",localidades);
                     intent.putExtra("r1", segunda.this.p1);
                     intent.putExtra("r2", segunda.this.p2);
                     intent.putExtra("r3", segunda.this.p3);
