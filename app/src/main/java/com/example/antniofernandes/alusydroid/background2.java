@@ -3,9 +3,8 @@ package com.example.antniofernandes.alusydroid;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
-import android.content.SharedPreferences;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -17,8 +16,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
-
-import static android.content.Context.MODE_PRIVATE;
 
 public class background2 extends AsyncTask<String, Void,String> {
     AlertDialog dialog;

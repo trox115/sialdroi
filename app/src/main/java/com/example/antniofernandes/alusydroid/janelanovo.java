@@ -1,13 +1,8 @@
 package com.example.antniofernandes.alusydroid;
 
-import android.Manifest;
-
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.AlertDialog;
@@ -15,16 +10,10 @@ import android.support.v7.app.AppCompatDialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-
-import static android.content.Context.MODE_APPEND;
-import static android.content.Context.MODE_PRIVATE;
 
 public class janelanovo extends AppCompatDialogFragment {
  EditText et1,et2,et3,et4,et5;
