@@ -463,7 +463,7 @@ public class gerador extends AppCompatActivity implements TimePickerDialog.OnTim
                 e.printStackTrace();
             }
         }
-        String[] TO = {"vitor.vieira@alusys.pt"};
+        String[] TO = {"tiago.neto@sialnor.pt,carlos.neto@sialnor.pt,teresa.fernandes@sialnor.pt,luis.neto@sialnor.pt"};
         String[] CC = {""};
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
         emailIntent.setData(Uri.parse("mailto:"));
@@ -476,7 +476,7 @@ public class gerador extends AppCompatActivity implements TimePickerDialog.OnTim
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Relatório " + firm);
         String vendedor = "";
         if (comercial.equals("E06")){
-             vendedor = "Rui Mendes";
+             vendedor = "Luís Machado";
         }
         else if(comercial.equals("E09")){
              vendedor = "João César";
