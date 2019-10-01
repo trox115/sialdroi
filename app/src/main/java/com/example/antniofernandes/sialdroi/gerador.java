@@ -1,4 +1,4 @@
-package com.example.antniofernandes.sialdroid;
+package com.example.antniofernandes.sialdroi;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
@@ -182,10 +182,10 @@ public class gerador extends AppCompatActivity implements TimePickerDialog.OnTim
         final String comercial = editor.getString("comercial","No name");
         String vendedor="";
         if (comercial.equals("E06")){
-            vendedor = "Rui Mendes";
+            vendedor = "Joaquim Gonçalves";
         }
         else if(comercial.equals("E09")){
-            vendedor = "João César";
+            vendedor = "Luís Machado";
         }
 
         String a1 = getIntent().getStringExtra("r00");
@@ -218,12 +218,12 @@ public class gerador extends AppCompatActivity implements TimePickerDialog.OnTim
             Sialnor.scaleAbsoluteHeight(20.0f);
             Sialnor.scaleAbsoluteWidth(100.0f);
             document.add(Sialnor);*/
-            InputStream ims = getAssets().open("alusydroid.png");
+            InputStream ims = getAssets().open("logo2.png");
             Bitmap bmp = BitmapFactory.decodeStream(ims);
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
             bmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
             Image image = Image.getInstance(stream.toByteArray());
-            image.scaleAbsoluteHeight(20.0f);
+            image.scaleAbsoluteHeight(40.0f);
             image.scaleAbsoluteWidth(100.0f);
             document.add(image);
 
@@ -232,7 +232,7 @@ public class gerador extends AppCompatActivity implements TimePickerDialog.OnTim
         } catch (IOException e2) {
             e2.printStackTrace();
         }
-        BaseColor myColor = WebColors.getRGBColor("#0066ff");
+        BaseColor myColor = WebColors.getRGBColor("#FFBC00");
         BaseColor myColor2 = WebColors.getRGBColor("A0A0A0");
         PdfPTable pdfPTable = new PdfPTable(10);
         pdfPTable.setSpacingAfter(30f);
@@ -261,7 +261,7 @@ public class gerador extends AppCompatActivity implements TimePickerDialog.OnTim
         pdfPTable.addCell(pdfPCell);
 
 
-        pdfPCell = new PdfPCell(new Phrase("Morada:" + localizacao + " - " + localidades));
+        pdfPCell = new PdfPCell(new Phrase("Morada: " + localizacao));
         pdfPCell.setVerticalAlignment(5);
         pdfPCell.setHorizontalAlignment(Element.ALIGN_LEFT);
         pdfPCell.setColspan(7);
@@ -314,7 +314,7 @@ public class gerador extends AppCompatActivity implements TimePickerDialog.OnTim
         pdfPCell.setBackgroundColor(myColor);
         pdfPCell.setColspan(10);
         pdfPTable.addCell(pdfPCell);
-        pdfPCell = new PdfPCell(new Phrase("\n 1.O cliente utiliza preferencialmente produts Alusys? \n"));
+        pdfPCell = new PdfPCell(new Phrase("\n 1.O cliente utiliza preferencialmente produtos Sialnor? \n"));
         pdfPCell.setColspan(9);
         pdfPTable.addCell(pdfPCell);
         pdfPCell = new PdfPCell(new Phrase(" \n " + p1));
@@ -434,7 +434,7 @@ public class gerador extends AppCompatActivity implements TimePickerDialog.OnTim
         b2.setRowspan(3);
         pdfPTable.addCell(b2);*/
         document.add(pdfPTable);
-        document.add(new Paragraph("Documento gerado por "+vendedor+" atrav\u00e9s de Alusydroid"));
+        document.add(new Paragraph("Documento gerado por "+vendedor+" atrav\u00e9s de Sialdroid"));
         document.add(new Paragraph("Data: "+ this.data1));
         document.close();
 
@@ -463,8 +463,9 @@ public class gerador extends AppCompatActivity implements TimePickerDialog.OnTim
                 e.printStackTrace();
             }
         }
-        String[] TO = {"tiago.neto@sialnor.pt,carlos.neto@sialnor.pt,teresa.fernandes@sialnor.pt,luis.neto@sialnor.pt"};
+        String[] TO = {" tiago.neto@sialnor.pt","carlos.neto@sialnor.pt","teresa.fernandes@sialnor.pt","luis.neto@sialnor.pt"};
         String[] CC = {""};
+
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
         emailIntent.setData(Uri.parse("mailto:"));
         emailIntent.setType("text/plain");
@@ -476,10 +477,10 @@ public class gerador extends AppCompatActivity implements TimePickerDialog.OnTim
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Relatório " + firm);
         String vendedor = "";
         if (comercial.equals("E06")){
-             vendedor = "Luís Machado";
+             vendedor = "Joaquim Gonçalves";
         }
         else if(comercial.equals("E09")){
-             vendedor = "João César";
+             vendedor = "Luís Machado";
         }
         emailIntent.putExtra(Intent.EXTRA_TEXT, "Segue em anexo o relat\u00f3rio do cliente " + firm + ", elaborado no dia" + cd + " correspondente ao dia " + this.data1 + "Elaborado pelo senhor "+ vendedor);
 

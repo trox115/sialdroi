@@ -1,4 +1,4 @@
-package com.example.antniofernandes.sialdroid;
+package com.example.antniofernandes.sialdroi;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

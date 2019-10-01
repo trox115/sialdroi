@@ -1,4 +1,4 @@
-package com.example.antniofernandes.sialdroid;
+package com.example.antniofernandes.sialdroi;
 
 import android.Manifest;
 import android.content.SharedPreferences;
@@ -61,7 +61,7 @@ public class atualizacao extends AppCompatActivity {
             public void onClick(View v) {
                 String s = spinner.getSelectedItem().toString();
                 if (comercial.equals(s) && comercial.equals("E06")){
-                     adress ="http://firseguranca.com/spinner2.php";
+                     adress ="http://ondalivre-fm.com/spinner.php";
 
                     StrictMode.setThreadPolicy((new StrictMode.ThreadPolicy.Builder().permitNetwork().build()));
                     try {
@@ -85,7 +85,7 @@ public class atualizacao extends AppCompatActivity {
                     }
                 }
                 else  if (comercial.equals(s) && comercial.equals("E09")){
-                    adress ="http://firseguranca.com/spinner.php";
+                    adress ="http://ondalivre-fm.com/spinner2.php";
                     StrictMode.setThreadPolicy((new StrictMode.ThreadPolicy.Builder().permitNetwork().build()));
                     try {
                         final String [] clientes=getclientes();

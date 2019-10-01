@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.antniofernandes.sialdroid">
+    package="com.example.antniofernandes.sialdroi">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -15,30 +15,30 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.example.antniofernandes.sialdroid.add"
+            android:name="com.example.antniofernandes.sialdroi.add"
             android:label="@string/title_activity_add"
             android:theme="@style/AppTheme.NoActionBar"></activity>
 
         <provider
             android:name="com.pushlink.android.FileProvider"
-            android:authorities="com.example.antniofernandes.sialdroid"
+            android:authorities="com.example.antniofernandes.sialdroi"
             android:exported="true" />
 
-        <activity android:name="com.example.antniofernandes.sialdroid.MainActivity">
+        <activity android:name="com.example.antniofernandes.sialdroi.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.antniofernandes.sialdroid.Clientes" />
-        <activity android:name="com.example.antniofernandes.sialdroid.gerar" />
-        <activity android:name="com.example.antniofernandes.sialdroid.planeador" />
-        <activity android:name="com.example.antniofernandes.sialdroid.segunda" />
-        <activity android:name="com.example.antniofernandes.sialdroid.terceira" />
-        <activity android:name="com.example.antniofernandes.sialdroid.gerador" />
-        <activity android:name="com.example.antniofernandes.sialdroid.atualizacao" />
-        <activity android:name="com.example.antniofernandes.sialdroid.login" />
+        <activity android:name="com.example.antniofernandes.sialdroi.Clientes" />
+        <activity android:name="com.example.antniofernandes.sialdroi.gerar" />
+        <activity android:name="com.example.antniofernandes.sialdroi.planeador" />
+        <activity android:name="com.example.antniofernandes.sialdroi.segunda" />
+        <activity android:name="com.example.antniofernandes.sialdroi.terceira" />
+        <activity android:name="com.example.antniofernandes.sialdroi.gerador" />
+        <activity android:name="com.example.antniofernandes.sialdroi.atualizacao" />
+        <activity android:name="com.example.antniofernandes.sialdroi.login" />
     </application>
 
 </manifest>

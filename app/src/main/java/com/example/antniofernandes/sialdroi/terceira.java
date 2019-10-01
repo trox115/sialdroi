@@ -1,4 +1,4 @@
-package com.example.antniofernandes.sialdroid;
+package com.example.antniofernandes.sialdroi;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;

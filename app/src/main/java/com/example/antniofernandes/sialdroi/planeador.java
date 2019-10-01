@@ -1,4 +1,4 @@
-package com.example.antniofernandes.sialdroid;
+package com.example.antniofernandes.sialdroi;
 
 import android.content.SharedPreferences;
 import android.os.StrictMode;
@@ -48,11 +48,11 @@ public class planeador extends AppCompatActivity {
         SharedPreferences editor = getSharedPreferences("minhaspreferencias", MODE_PRIVATE);
         final String comercial = editor.getString("comercial","No name"); //default value
         if (comercial.equals("E09")){
-            adress ="http://firseguranca.com/spinner.php";
+            adress ="http://ondalivre-fm.com/spinner.php";
 
         }
         else if (comercial.equals("E06")){
-            adress ="http://firseguranca.com/spinner2.php";
+            adress ="http://ondalivre-fm.com/spinner2.php";
         }
 
        String[] zona = new String[0];

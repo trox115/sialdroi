@@ -1,4 +1,4 @@
-package com.example.antniofernandes.sialdroid;
+package com.example.antniofernandes.sialdroi;
 
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;

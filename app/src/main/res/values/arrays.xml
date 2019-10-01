@@ -16,6 +16,9 @@
 
         <array name="marcas">
             <item>Selecione</item>
+            <item>ALEDI</item>
+            <item>ALUFLAVIAE</item>
+            <item>A.S METAIS</item>
             <item>LOUSALU</item>
             <item>HASTE</item>
             <item>ALESIL</item>
@@ -27,6 +30,7 @@
             <item>VERCAR</item>
             <item>NAVARRA</item>
             <item>SOSOARES</item>
+            <item>ITESAL</item>
             <item>SCA</item>
             <item>MANUEL ALMEIDA</item>
             <item>M S ALUMINIOS</item>

@@ -1,4 +1,4 @@
-package com.example.antniofernandes.sialdroid;
+package com.example.antniofernandes.sialdroi;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -59,7 +59,7 @@ public class background2 extends AsyncTask<String, Void,String> {
         String telefone = voids[4];
         String vendedor=voids[5];
 
-        String connector = "http://firseguranca.com/prog/add.php";
+        String connector = "http://ondalivre-fm.com/prog/add.php";
 
         String resultado = null;
         try {

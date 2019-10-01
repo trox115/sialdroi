@@ -1,4 +1,4 @@
-package com.example.antniofernandes.sialdroid;
+package com.example.antniofernandes.sialdroi;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;

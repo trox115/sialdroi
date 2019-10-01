@@ -1,4 +1,4 @@
-package com.example.antniofernandes.sialdroid;
+package com.example.antniofernandes.sialdroi;
 
 import android.Manifest;
 import android.content.Intent;
@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         PushLink.addMetadata("Brand", Build.BRAND);
         PushLink.addMetadata("Model", Build.MODEL);
         PushLink.setCurrentStrategy(StrategyEnum.STATUS_BAR);
-        PushLink.start(this, R.mipmap.ic_launcher, "9gomadq93a7car7i", yourDeviceID);
+        PushLink.start(this, R.mipmap.ic_launcher, "76mhebgfe6qnmepo", yourDeviceID);
         setContentView(R.layout.activity_main);
 
         SharedPreferences editor = getSharedPreferences("minhaspreferencias", MODE_PRIVATE);
